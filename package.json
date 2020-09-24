@@ -1,0 +1,73 @@
+{
+  "name": "tpl-ts",
+  "version": "0.1.0",
+  "description": "ts 基础开发模板",
+  "main": "dist/index.js",
+  "repository": "https://github.com/roojay520/tpl-ts",
+  "author": "roojay <roojay520@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "clear": "rimraf ./dist",
+    "dev": "cross-env NODE_ENV=development rollup -c rollup.config.js --watch",
+    "build": "rimraf ./dist && cross-env NODE_ENV=production rollup -c rollup.config.js",
+    "prettier:fix": "prettier --write .",
+    "eslint": "eslint . --ext .ts,.tsx,.js",
+    "eslint:fix": "eslint . --fix --ext .ts,.tsx,.js",
+    "commit": "git-cz",
+    "release": "standard-version"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx}": [
+      "eslint --fix --ext .ts,.tsx,.js",
+      "prettier --write ."
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-typescript": "^7.10.4",
+    "@commitlint/cli": "^9.1.2",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@types/node": "^14.11.2",
+    "@types/rimraf": "^3.0.0",
+    "@types/standard-version": "^7.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
+    "commitizen": "^4.2.1",
+    "commitlint-config-cz": "^0.13.2",
+    "cross-env": "^7.0.2",
+    "cz-customizable": "^6.3.0",
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb-typescript": "^10.0.0",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-plugin-import": "^2.22.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
+    "rimraf": "3.0.2",
+    "rollup": "^2.28.1",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "standard-version": "^9.0.0",
+    "typescript": "^4.0.3"
+  }
+}
